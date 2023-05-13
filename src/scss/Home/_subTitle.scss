@@ -1,0 +1,98 @@
+.section__sub-title--wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+
+  h2 {
+    font-size: 24px;
+
+    @media (max-width: 600px) {
+      font-size: 20px;
+    }
+  }
+
+  .filter {
+    display: flex;
+    margin-right: 14px;
+    background-color: $primary-color;
+    @include transition;
+    align-items: center;
+    border-radius: 5px;
+    position: relative;
+
+    &__text {
+      width: 100%;
+      padding-left: 8px;
+      span {
+        font-size: 16px;
+        color: rgb(105, 105, 105);
+        cursor: default;
+
+        @media (max-width: 600px) {
+          font-size: 14px;
+        }
+      }
+    }
+
+    &__options {
+      display: flex;
+      align-items: center;
+
+      &--option {
+        display: flex;
+        align-items: center;
+        margin-left: 10px;
+        cursor: pointer;
+
+        &:last-child {
+          margin-right: 10px;
+          border-left: 1px solid rgba(105, 105, 105, 0.549);
+          padding-left: 8px;
+        }
+
+        &-icon {
+          color: rgb(105, 105, 105);
+        }
+      }
+    }
+
+    &__names {
+      position: absolute;
+      background-color: $primary-color;
+      display: flex;
+      flex-direction: column;
+      color: rgb(105, 105, 105);
+      width: 100%;
+      z-index: 10;
+      top: 44px;
+      border-radius: 5px;
+
+      &--name {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        height: 40px;
+        cursor: pointer;
+        &:first-child {
+          border-top-left-radius: 5px;
+          border-top-right-radius: 5px;
+        }
+
+        &:last-child {
+          border-bottom-left-radius: 5px;
+          border-bottom-right-radius: 5px;
+        }
+
+        &:hover {
+          background-color: #33415571;
+          color: $primary-color;
+        }
+
+        @media (max-width: 600px) {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}

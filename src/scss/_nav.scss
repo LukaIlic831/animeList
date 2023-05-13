@@ -1,0 +1,43 @@
+nav {
+  display: flex;
+  width: 100%;
+  max-width: 1400px;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 0 16px;
+  height: 80px;
+  align-items: center;
+
+  @media (max-width: 600px) {
+    max-width: 1600px;
+    padding: 0 20px;
+  }
+
+  .nav__logo {
+    h2 {
+      font-size: 24px;
+
+      @media (max-width: 600px) {
+        font-size: 22px;
+      }
+    }
+  }
+
+  .nav__options {
+    display: flex;
+
+    &--option {
+      margin-left: 22px;
+
+      &-link {
+        font-size: 22px;
+        cursor: pointer;
+
+        @media (max-width: 600px) {
+          font-size: 18px;
+        }
+      }
+    }
+  }
+}

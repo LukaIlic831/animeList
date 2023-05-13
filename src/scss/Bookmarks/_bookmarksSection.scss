@@ -1,0 +1,28 @@
+.section {
+  &__title {
+    font-size: 16px;
+    font-weight: 700;
+  }
+}
+
+.bookmarks__no-result {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  &--background {
+    background-color: $secundary-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 600px;
+    width: 100%;
+
+    height: 60px;
+    border-radius: 5px;
+
+    p {
+      font-size: 18px;
+    }
+  }
+}

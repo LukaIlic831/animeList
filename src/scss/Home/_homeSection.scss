@@ -1,0 +1,34 @@
+.section {
+  &.section__wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $secundary-color;
+    height: 60px;
+  }
+
+  &__options {
+    display: flex;
+    align-items: center;
+    padding-right: 8px;
+
+    @media (max-width:600px) {
+      padding-right: 0;
+    }
+
+    &--option {
+      &-text {
+        font-size: 16px;
+        cursor: pointer;
+        @media (max-width:600px) {
+          font-size: 14px;
+        }
+      }
+
+      &:last-child {
+        padding-left: 14px;
+      }
+    }
+  }
+}
