@@ -2,7 +2,6 @@ import * as React from "react";
 import Nav from "../components/Nav";
 import HomeSection from "../components/Home/HomeSection";
 import AnimeList from "../components/Home/CurrentSeason";
-import Search from "../components/Search/Search";
 
 interface IHomeProps {}
 

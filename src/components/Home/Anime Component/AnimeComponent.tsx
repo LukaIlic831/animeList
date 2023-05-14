@@ -48,7 +48,7 @@ const AnimeComponent: React.FunctionComponent<IAnimeComponentProps> = (
         if (mountedRef.current) {
           setImg(image);
         }
-      }, 300);
+      }, 600);
     };
     return () => {
       mountedRef.current = false;
