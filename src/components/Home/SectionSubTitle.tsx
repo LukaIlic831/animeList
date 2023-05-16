@@ -7,10 +7,28 @@ import { AppDispatch } from "../../store/store";
 import { updatePage } from "../../store/features/animeList.reducer";
 import { AppContext } from "../../App";
 import { IAppContext } from "../../types";
+import { motion } from "framer-motion";
 
 interface ISectionSubTitleProps {
   subTitle: string;
 }
+
+const subTitleVariants = {
+  initial: {
+    opacity: 0,
+  },
+  animate: {
+    opacity: 1,
+    transition: {
+      type: "spring",
+      duration: 2,
+    },
+  },
+  exit: {
+    opacity: 0,
+    transition: { ease: "easeInOut" },
+  },
+};
 
 var changedFilter = filter;
 
@@ -46,10 +64,15 @@ const SectionSubTitle: React.FunctionComponent<ISectionSubTitleProps> = (
   }, []);
 
   return (
-    <div className="section__sub-title--wrapper">
-      <h2>{props.subTitle}</h2>
+    <motion.div
+      variants={subTitleVariants}
+      animate="animate"
+      initial="initial"
+      className="section__sub-title--wrapper"
+    >
+      <motion.h2>{props.subTitle}</motion.h2>
       {props.subTitle === "Top Anime" && (
-        <div
+        <motion.div
           className="filter"
           style={
             isFilterOpened
@@ -94,9 +117,9 @@ const SectionSubTitle: React.FunctionComponent<ISectionSubTitleProps> = (
               ))}
             </ul>
           )}
-        </div>
+        </motion.div>
       )}
-    </div>
+    </motion.div>
   );
 };
 

@@ -6,6 +6,33 @@ $secundary-color: #1e293b;
 $button-color: #2563eb;
 $category-color: #334155;
 
+@keyframes skeleton-loading-img {
+  0% {
+    background-color: rgba(177, 177, 177, 0.664);
+  }
+  100% {
+    background-color: rgb(177, 177, 177);
+  }
+}
+
+@keyframes skeleton-loading-genre {
+  0% {
+    background-color: #33415579;
+  }
+  100% {
+    background-color: $category-color;
+  }
+}
+
+@keyframes skeleton-loading-title {
+  0% {
+    left: -14px;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
 @mixin text-overflow {
   p {
     overflow: hidden;
@@ -25,9 +52,14 @@ $category-color: #334155;
   transition: all 300ms ease;
 }
 
+@mixin skeleton-animation($animation-info) {
+  animation: $animation-info;
+}
+
 body {
   background-color: $background-color;
   color: $primary-color;
+  overflow-x: hidden;
 }
 
 * {

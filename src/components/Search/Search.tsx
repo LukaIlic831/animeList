@@ -14,10 +14,31 @@ import {
   searchAnime,
 } from "../../store/features/searchedAnime.reducer";
 import useDebounce from "../../utils/useDebounce";
+import { motion } from "framer-motion";
 
 interface ISearchProps {
   setSearchOpened: React.Dispatch<React.SetStateAction<boolean>>;
 }
+
+const searchVariants = {
+  initial: {
+    opacity: 0,
+    y: "-200px",
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      duration: 1,
+    },
+  },
+  exit: {
+    opacity: 0,
+    y: "-200px",
+    transition: { ease: "easeInOut" },
+  },
+};
 
 const Search: React.FunctionComponent<ISearchProps> = (props) => {
   const dispatch = useDispatch<AppDispatch>();
@@ -31,7 +52,9 @@ const Search: React.FunctionComponent<ISearchProps> = (props) => {
 
   const onEsc = (): void => {
     setSearchOpened(false);
-    dispatch(emptyState());
+    setTimeout(() => {
+      dispatch(emptyState());
+    }, 1000);
   };
 
   React.useEffect(() => {
@@ -48,7 +71,13 @@ const Search: React.FunctionComponent<ISearchProps> = (props) => {
 
   return (
     <div className="search__wrapper">
-      <div className="search__block">
+      <motion.div
+        className="search__block"
+        variants={searchVariants}
+        animate="animate"
+        initial="initial"
+        exit="exit"
+      >
         <div className="search">
           <div className="search__icon">
             <FontAwesomeIcon icon={faMagnifyingGlass} />
@@ -91,7 +120,7 @@ const Search: React.FunctionComponent<ISearchProps> = (props) => {
           </ul>
         </div>
         <SearchData />
-      </div>
+      </motion.div>
     </div>
   );
 };

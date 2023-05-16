@@ -8,6 +8,7 @@ import { IAppContext } from "../types";
 import { updatePage } from "../store/features/animeList.reducer";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../store/store";
+import { motion } from "framer-motion";
 
 interface INavProps {
   bookmarkPage: boolean;
@@ -17,9 +18,7 @@ interface INavProps {
 const Nav: React.FunctionComponent<INavProps> = (props) => {
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
-  const { setSearchOpened } = React.useContext(
-    AppContext
-  ) as IAppContext;
+  const { setSearchOpened } = React.useContext(AppContext) as IAppContext;
 
   return (
     <nav>
@@ -43,7 +42,8 @@ const Nav: React.FunctionComponent<INavProps> = (props) => {
               role="button"
               className="nav__options--option-link"
               onClick={() => {
-                dispatch(updatePage({ filterChanged: true })); navigate("/");
+                dispatch(updatePage({ filterChanged: true }));
+                navigate("/");
               }}
             >
               <FontAwesomeIcon icon={faHouse} />

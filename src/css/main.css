@@ -1,7 +1,32 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap");
+@keyframes skeleton-loading-img {
+  0% {
+    background-color: rgba(177, 177, 177, 0.664);
+  }
+  100% {
+    background-color: rgb(177, 177, 177);
+  }
+}
+@keyframes skeleton-loading-genre {
+  0% {
+    background-color: rgba(51, 65, 85, 0.4745098039);
+  }
+  100% {
+    background-color: #334155;
+  }
+}
+@keyframes skeleton-loading-title {
+  0% {
+    left: -14px;
+  }
+  100% {
+    left: 100%;
+  }
+}
 body {
   background-color: #0f172a;
   color: white;
+  overflow-x: hidden;
 }
 
 * {
@@ -246,6 +271,7 @@ nav .nav__options--option-link {
 }
 .skeleton__block .skeleton__img {
   background-color: rgb(177, 177, 177);
+  animation: skeleton-loading-img 1s linear infinite alternate;
   width: 100%;
   height: 380px;
 }
@@ -265,6 +291,17 @@ nav .nav__options--option-link {
   background-color: rgb(105, 105, 105);
   height: 18px;
   border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+}
+.skeleton__block .skeleton__title::after {
+  content: "";
+  background-color: rgba(99, 97, 97, 0.41);
+  filter: blur(5px);
+  height: 100%;
+  width: 30px;
+  position: absolute;
+  animation: skeleton-loading-title 1s linear infinite;
 }
 .skeleton__block .skeleton__categories {
   width: 100%;
@@ -286,30 +323,12 @@ nav .nav__options--option-link {
   background-color: #334155;
   padding: 2px 22px;
   border-radius: 5px;
+  animation: skeleton-loading-genre 1s linear infinite alternate;
 }
 
 .section__title {
   font-size: 16px;
   font-weight: 700;
-}
-
-.bookmarks__no-result {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-.bookmarks__no-result--background {
-  background-color: #1e293b;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  max-width: 600px;
-  width: 100%;
-  height: 60px;
-  border-radius: 5px;
-}
-.bookmarks__no-result--background p {
-  font-size: 18px;
 }
 
 .bookmarks__no-result {
@@ -516,6 +535,7 @@ nav .nav__options--option-link {
 .clicked-anime__wrapper .clicked-anime__block .skeleton-anime__img {
   width: 400px;
   background-color: rgb(177, 177, 177);
+  animation: skeleton-loading-img 1s linear infinite alternate;
   height: 600px;
 }
 @media (max-width: 768px) {
@@ -560,6 +580,17 @@ nav .nav__options--option-link {
   height: 12px;
   border-radius: 5px;
   background-color: rgb(105, 105, 105);
+  overflow: hidden;
+  position: relative;
+}
+.clicked-anime__wrapper .clicked-anime__block .skeleton-anime__text--info::after {
+  content: "";
+  background-color: rgba(99, 97, 97, 0.41);
+  filter: blur(5px);
+  height: 100%;
+  width: 30px;
+  position: absolute;
+  animation: skeleton-loading-title 1s linear infinite;
 }
 @media (max-width: 768px) {
   .clicked-anime__wrapper .clicked-anime__block .skeleton-anime__text--info {
@@ -572,6 +603,17 @@ nav .nav__options--option-link {
   height: 50px;
   border-radius: 5px;
   background-color: rgb(105, 105, 105);
+  overflow: hidden;
+  position: relative;
+}
+.clicked-anime__wrapper .clicked-anime__block .skeleton-anime__text--title::after {
+  content: "";
+  background-color: rgba(99, 97, 97, 0.41);
+  filter: blur(5px);
+  height: 100%;
+  width: 30px;
+  position: absolute;
+  animation: skeleton-loading-title 1s linear infinite;
 }
 .clicked-anime__wrapper .clicked-anime__block .skeleton-anime__text--genres {
   width: 100%;
@@ -584,6 +626,7 @@ nav .nav__options--option-link {
   background-color: #334155;
   padding: 10px 30px;
   border-radius: 5px;
+  animation: skeleton-loading-genre 1s linear infinite alternate;
 }
 .clicked-anime__wrapper .clicked-anime__block .skeleton-anime__text--genres-genre:last-child {
   margin-right: 0;
@@ -615,6 +658,17 @@ nav .nav__options--option-link {
   width: 100%;
   height: 200px;
   margin-top: 10px;
+  overflow: hidden;
+  position: relative;
+}
+.clicked-anime__wrapper .clicked-anime__text-block .skeleton-anime__para--desc::after {
+  content: "";
+  background-color: rgba(99, 97, 97, 0.219);
+  filter: blur(5px);
+  height: 100%;
+  width: 30px;
+  position: absolute;
+  animation: skeleton-loading-title 1s linear infinite;
 }
 
 @keyframes loading-animation {
@@ -919,7 +973,7 @@ nav .nav__options--option-link {
   flex-direction: column;
   color: rgb(105, 105, 105);
   width: 100%;
-  z-index: 10;
+  z-index: 20;
   top: 44px;
   border-radius: 5px;
 }

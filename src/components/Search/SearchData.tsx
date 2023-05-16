@@ -19,7 +19,9 @@ const SearchData: React.FunctionComponent<ISearchDataProps> = (props) => {
   const openAnime = (id: number): void => {
     setSearchOpened(false);
     navigate(`/anime/${id}`);
-    dispatch(emptyState());
+    setTimeout(() => {
+      dispatch(emptyState());
+    }, 1000);
   };
 
   return (
