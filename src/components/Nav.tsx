@@ -8,7 +8,7 @@ import { IAppContext } from "../types";
 import { updatePage } from "../store/features/animeList.reducer";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../store/store";
-import { motion } from "framer-motion";
+import logo from "../assetss/download.png";
 
 interface INavProps {
   bookmarkPage: boolean;
@@ -22,11 +22,9 @@ const Nav: React.FunctionComponent<INavProps> = (props) => {
 
   return (
     <nav>
-      <div className="nav__logo">
-        <h2 onClick={() => navigate("/")} style={{ cursor: "pointer" }}>
-          AnimeList
-        </h2>
-      </div>
+      <figure className="nav__logo">
+        <img src={logo} className="logo" onClick={() => navigate("/")}/>
+      </figure>
       <ul className="nav__options">
         <li className="nav__options--option">
           {!props.bookmarkPage ? (

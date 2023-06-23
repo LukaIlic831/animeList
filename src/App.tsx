@@ -20,6 +20,7 @@ export const AppContext = React.createContext<IAppContext | null>(null);
 function App() {
   const location = useLocation();
   const { setSearchOpened } = React.useContext(AppContext) as IAppContext;
+  
   return (
     <AnimatePresence mode="wait" onExitComplete={() => setSearchOpened(false)}>
       <Routes location={location} key={location.key}>

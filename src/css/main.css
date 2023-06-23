@@ -92,12 +92,15 @@ nav {
     padding: 0 20px;
   }
 }
-nav .nav__logo h2 {
-  font-size: 24px;
+nav .nav__logo .logo {
+  cursor: pointer;
+  width: 46px;
+  height: 46px;
 }
 @media (max-width: 600px) {
-  nav .nav__logo h2 {
-    font-size: 22px;
+  nav .nav__logo .logo {
+    width: 40px;
+    height: 40px;
   }
 }
 nav .nav__options {
