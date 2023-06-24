@@ -61,8 +61,8 @@ const Search: React.FunctionComponent<ISearchProps> = (props) => {
     if (debounceValue !== "") {
       dispatch(
         searchAnime(
-          `https://api.jikan.moe/v4/anime?q=${debounceValue}&${
-            isChecked ? "sfw" : ""
+          `https://api.jikan.moe/v4/anime?q=${debounceValue}${
+            isChecked ? "&sfw" : ""
           }`
         )
       );

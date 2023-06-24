@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { IAnimeList } from "../../types";
-import { firstAnimeList } from "../../data";
 import axios from "axios";
 
 interface IinitialState {
@@ -19,6 +18,7 @@ export const searchAnime = createAsyncThunk(
   "searchedAnime/searchAnime",
   async (url: string): Promise<IAnimeList | null> => {
     try {
+      console.log(url)
       const response = await axios
         .get<IAnimeList>(url)
         .then((response) => response.data);

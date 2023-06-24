@@ -63,7 +63,7 @@ const AnimeListWrapper: React.FunctionComponent<IAnimeListWrapperProps> = (
             getTopAnime({
               url: `https://api.jikan.moe/v4/top/anime?page=${
                 page === 0 ? 1 : page
-              }&type=${filterText !== "Filter by Type" ? filterText : null}`,
+              }${filterText !== "Filter by Type" ? "&type=" + filterText : ""}`,
               page: page === 0 ? 1 : page,
             })
           ).then(() => setFilterChangedSkel(false));

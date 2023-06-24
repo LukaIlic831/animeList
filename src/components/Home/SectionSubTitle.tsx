@@ -30,6 +30,19 @@ const subTitleVariants = {
   },
 };
 
+const filterVariants = {
+  initial: {
+    opacity: 0,
+  },
+  animate: {
+    opacity: 1,
+    transition: {
+      type: "spring",
+      duration: 1,
+    },
+  }
+};
+
 var changedFilter = filter;
 
 const SectionSubTitle: React.FunctionComponent<ISectionSubTitleProps> = (
@@ -40,7 +53,7 @@ const SectionSubTitle: React.FunctionComponent<ISectionSubTitleProps> = (
     AppContext
   ) as IAppContext;
   const [isFilterOpened, setIsFilterOpened] = React.useState<boolean>(false);
-  const filterRef = React.useRef<HTMLUListElement | null>(null);
+  const filterRef = React.useRef<HTMLDivElement | null>(null);
 
   const changeFilter = (name: string): void => {
     setFilterText(name);
@@ -74,6 +87,7 @@ const SectionSubTitle: React.FunctionComponent<ISectionSubTitleProps> = (
       {props.subTitle === "Top Anime" && (
         <motion.div
           className="filter"
+          ref={filterRef}
           style={
             isFilterOpened
               ? { border: "2px solid #2563eb" }
@@ -97,7 +111,10 @@ const SectionSubTitle: React.FunctionComponent<ISectionSubTitleProps> = (
             )}
             <li className="filter__options--option">
               <FontAwesomeIcon
-                style={{ paddingTop: 2 }}
+                style={{
+                  paddingTop: 2,
+                  pointerEvents: isFilterOpened ? "none" : "auto",
+                }}
                 icon={faAngleDown}
                 onClick={() => setIsFilterOpened(true)}
                 className="filter__options--option-icon"
@@ -105,7 +122,10 @@ const SectionSubTitle: React.FunctionComponent<ISectionSubTitleProps> = (
             </li>
           </ul>
           {isFilterOpened && (
-            <ul className="filter__names" ref={filterRef}>
+            <motion.ul
+              variants={filterVariants}
+              className="filter__names"
+            >
               {changedFilter.map((item) => (
                 <li
                   className="filter__names--name"
@@ -115,7 +135,7 @@ const SectionSubTitle: React.FunctionComponent<ISectionSubTitleProps> = (
                   <p>{item.name}</p>
                 </li>
               ))}
-            </ul>
+            </motion.ul>
           )}
         </motion.div>
       )}

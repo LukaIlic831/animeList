@@ -2,7 +2,7 @@ import * as React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { faBookmark, faStar } from "@fortawesome/free-regular-svg-icons";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { AppContext } from "../App";
 import { IAppContext } from "../types";
 import { updatePage } from "../store/features/animeList.reducer";
@@ -17,13 +17,18 @@ interface INavProps {
 
 const Nav: React.FunctionComponent<INavProps> = (props) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const dispatch = useDispatch<AppDispatch>();
   const { setSearchOpened } = React.useContext(AppContext) as IAppContext;
 
   return (
     <nav>
       <figure className="nav__logo">
-        <img src={logo} className="logo" onClick={() => navigate("/")}/>
+        {location.pathname === "/" ? (
+          <img src={logo} className="logo" style={{cursor:"default"}}/>
+        ) : (
+          <img src={logo} className="logo" onClick={() => navigate("/")} />
+        )}
       </figure>
       <ul className="nav__options">
         <li className="nav__options--option">
